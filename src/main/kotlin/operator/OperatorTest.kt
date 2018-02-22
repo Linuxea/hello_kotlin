@@ -14,6 +14,13 @@ class Name(val age: Int) {
         return Name(age - ok)
     }
 
+    override operator fun equals(name: Any?): Boolean {
+        if (name is Name) {
+            return age.compareTo(name.age) == 0
+        }
+        return false
+    }
+
 }
 
 fun main(args: Array<String>) {
@@ -24,5 +31,10 @@ fun main(args: Array<String>) {
 
     var plusAge = name + 8
     println(plusAge.age)
+
+    // equals override
+    var name1 = Name(89)
+    var name2 = Name(89)
+    println(name1.equals(name2))
 
 }
